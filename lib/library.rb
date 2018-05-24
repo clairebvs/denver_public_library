@@ -6,7 +6,6 @@ class Library
   end
 
   def add_to_collection(book)
-    # require 'pry' ; binding.pry
     @books << book
     return book
   end
