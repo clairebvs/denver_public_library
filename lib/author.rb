@@ -13,10 +13,13 @@ class Author
 
   def add_book(title, publication_date)
     publication_year = publication_date.split.last
-    book = Book.new({author_first_name: first_name, author_last_name: last_name, title: title, publication_date: publication_year})
+    book = Book.new({author_first_name: @first_name, author_last_name: @last_name, title: title, publication_date: publication_year})
+    # [:publication_date] = ""
+    # @books.find do |publication_date|
+    #   book[]
     @books << book
     return book
+    require 'pry' ; binding.pry
   end
 
-  Date.strptime("12/22/2011", "%m/%d/%Y")
 end

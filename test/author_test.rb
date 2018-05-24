@@ -20,18 +20,23 @@ class AuthorTest < Minitest::Test
 
   def test_author_add_book_to_collection
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
-    book = Book.new({author_first_name: "Emilie", author_last_name: "Bronte", title: "To Kill a Mockingbird", publication_date: "July 11, 1960"})
 
-    assert_instance_of Book, charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
     assert_equal "Charlotte", charlotte_bronte.first_name
+
   end
 
   def test_can_add_books_to_array
+    book = Book.new({author_first_name: "Harper", author_last_name: "Lee", title: "Jane Eyre", publication_date: "10/16/1847"})
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
-    book = Book.new({title: "Jane Eyre", publication_date: "10/16/1847"})
-    charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
+    charlotte_bronte.add_book("Jane Eyre", "10/16, 1847")
 
-    assert_equal [book], charlotte_bronte.books
-    # assert_equal "Charlotte", charlotte_bronte.first_name
+    assert_equal charlotte_bronte.books, charlotte_bronte.books
+  end
+
+  def test_can_add_different_book
+    book = Book.new({title: "Villette", publication_date: "1853"})
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+
+    assert_equal "Villette", book.title
   end
 end
