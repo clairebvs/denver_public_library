@@ -45,4 +45,14 @@ class LibraryTest < Minitest::Test
     assert_equal "Villette", villette.title
   end
 
+  def test_can_include_specific_book
+    dpl = Library.new
+    harper_lee  = Author.new({first_name: "Harper", last_name: "Lee"})
+    mockingbird = harper_lee.add_book("To Kill a Mockingbird", "July 11, 1960")
+
+    dpl.add_to_collection(mockingbird)
+
+    assert dpl.include?("To Kill a Mockingbird")
+  end
+
 end
